@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Not. — The Caffeine Cartel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --espresso: #1a0f08;
+    --dark-roast: #2d1a0e;
+    --medium-roast: #6b3a1f;
+    --caramel: #c47a2b;
+    --cream: #f5ede0;
+    --steam: #d4c4a8;
+  }
+  body {
+    background-color: var(--espresso);
+    color: var(--cream);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid rgba(196,122,43,0.2);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    color: var(--caramel);
+    font-style: italic;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--steam);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--caramel); }
+  .nav-social a {
+    color: var(--caramel);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(196,122,43,0.4);
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .nav-social a:hover { background: var(--caramel); color: var(--espresso); }
+  .post-hero {
+    text-align: center;
+    padding: 5rem 3rem 3rem;
+    position: relative;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .post-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 3rem;
+    background: linear-gradient(to bottom, transparent, var(--caramel));
+  }
+  .post-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .post-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .post-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--medium-roast);
+    text-transform: uppercase;
+  }
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2.5rem auto;
+    max-width: 200px;
+  }
+  .hero-divider::before, .hero-divider::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: rgba(196,122,43,0.4);
+  }
+  article {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  article p {
+    margin-bottom: 1.75rem;
+    color: var(--steam);
+    font-size: 1.1rem;
+    line-height: 1.85;
+  }
+  article p:first-of-type {
+    font-size: 1.25rem;
+    color: var(--cream);
+    font-style: italic;
+  }
+  article em { color: var(--cream); font-style: italic; }
+  .pull-quote {
+    border-left: 2px solid var(--caramel);
+    margin: 2.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.75rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  .post-sign-off {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(196,122,43,0.15);
+  }
+  .author-block {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--dark-roast);
+    border: 1px solid rgba(196,122,43,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--caramel);
+    font-style: italic;
+    flex-shrink: 0;
+  }
+  .author-info p { margin: 0; font-size: 0.85rem !important; color: var(--steam) !important; font-style: normal !important; }
+  .author-info strong {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--caramel) !important;
+    margin-bottom: 0.2rem;
+  }
+  .fb-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--espresso);
+    background: var(--caramel);
+    padding: 0.7rem 1.75rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .fb-share:hover { opacity: 0.85; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--steam);
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--caramel); }
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid rgba(196,122,43,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--medium-roast);
+    text-transform: uppercase;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--caramel);
+    font-style: italic;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .post-hero { padding: 3rem 1.5rem 2rem; }
+    article { padding: 0 1.5rem 4rem; }
+    footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-brand">The Caffeine Cartel</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="#">Stories</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="https://www.facebook.com/profile.php?id=61576680840491" target="_blank">Follow on Facebook →</a>
+    </div>
+  </nav>
+
+  <div class="post-hero">
+    <span class="post-tag">Life &amp; Reflection · First Post</span>
+    <h1 class="post-headline">Why Not.</h1>
+    <div class="post-meta">By Morne · Founder, The Caffeine Cartel · April 2026</div>
+    <div class="hero-divider">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="12" cy="12" rx="9" ry="6" transform="rotate(-30 12 12)" stroke="#c47a2b" stroke-width="1.5"/>
+        <path d="M6 9 Q12 12 18 15" stroke="#c47a2b" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <article>
+    <p>Often, we wait for motivation to come along and inspire us to start something — training for a race, going to gym, starting a business, or just getting up and making that third cup of coffee. Often, we start because we must. You lose your job, you have a health scare, or you spill the second cup of coffee on the floor.</p>
+
+    <p>The Caffeine Cartel is something else. Maybe it's a passion or an addiction, maybe it's a challenge I've set myself to create something new. It's not about moving on or moving out. It's not about change or motivation. And maybe, as I walk down this road, the reason will change. Right now, I want to put the best quality, aromatic coffee beans into the hands of people who actually love coffee.</p>
+
+    <p>The love for coffee has sparked an entire booming industry — from the big boys in shopping malls to the smaller baristas popping up on every corner. The Caffeine Cartel is not that. The Caffeine Cartel is in your house. It's next to your coffee machine at 5:30am when the world is still quiet. It's at your kid's school event, at the side of a muddy sports field, at the office when the meeting has gone on twenty minutes too long. It's more personal than your name written on a paper cup.</p>
+
+    <div class="pull-quote">"It's about the ritual. The smell that hits you before the first sip."</div>
+
+    <p>That moment — however brief — where you hold a warm cup and everything feels slightly more manageable. Coffee doesn't just wake you up. For a lot of us, it's the punctuation between the chapters of the day.</p>
+
+    <p>I don't have all the answers yet. I don't have a fancy shop or a fleet of trailers — yet. What I do have is a genuine love for great coffee, a stubborn streak, and the belief that something built slowly, with care and honesty, is worth building. The Caffeine Cartel starts here, with this post, with this cup, with this very simple question that I've learned is actually the most powerful one you can ask yourself:</p>
+
+    <p><em>Why not.</em></p>
+
+    <div class="post-sign-off">
+      <div class="author-block">
+        <div class="author-avatar">M</div>
+        <div class="author-info">
+          <strong>Morne</strong>
+          <p>Founder of The Caffeine Cartel · Kempton Park, South Africa</p>
+        </div>
+      </div>
+      <a href="https://www.facebook.com/profile.php?id=61576680840491" target="_blank" class="fb-share">Share on Facebook →</a>
+      <a href="/" class="back-link">← Back to home</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>© 2025 The Caffeine Cartel · All rights reserved</p>
+    <span class="footer-brand">Bean there, done that.</span>
+    <p>Kempton Park · South Africa</p>
+  </footer>
+</body>
+</html>
