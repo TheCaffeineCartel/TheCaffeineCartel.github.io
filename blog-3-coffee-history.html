@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What the History of Coffee Teaches You — The Caffeine Cartel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --espresso:    #1a0f0a;
+      --dark-roast:  #231409;
+      --mid-roast:   #3b1f10;
+      --gold:        #c8a97a;
+      --crema:       #e8d5b0;
+      --muted:       #7a6248;
+      --text:        #e0cba8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--espresso);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.8;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      border-bottom: 1px solid rgba(200,169,122,0.15);
+      position: sticky;
+      top: 0;
+      background: var(--espresso);
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 2rem;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45) saturate(1.2);
+    }
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--espresso) 18%, transparent 60%);
+    }
+    .hero-content {
+      position: relative;
+      padding: 4rem 3rem 3.5rem;
+      max-width: 760px;
+    }
+    .blog-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--crema);
+      margin-bottom: 1rem;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      font-style: italic;
+    }
+
+    /* ── ARTICLE ── */
+    article {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .intro {
+      font-size: 1.12rem;
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin-bottom: 3.5rem;
+      color: var(--crema);
+    }
+
+    .section-number {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--crema);
+      margin-bottom: 1.2rem;
+      line-height: 1.25;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
+      color: var(--text);
+    }
+
+    strong { color: var(--gold); }
+
+    .wit-box {
+      background: var(--dark-roast);
+      border-left: 3px solid var(--mid-roast);
+      border-radius: 0 6px 6px 0;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .wit-box strong {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--mid-roast);
+      margin-bottom: 0.4rem;
+      font-style: normal;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3.5rem 0;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+    }
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--mid-roast));
+    }
+    .section-divider::after {
+      background: linear-gradient(to left, transparent, var(--mid-roast));
+    }
+
+    .conclusion {
+      background: var(--dark-roast);
+      border-radius: 10px;
+      padding: 2.5rem 2.8rem;
+      margin-top: 3.5rem;
+      border: 1px solid rgba(200,169,122,0.1);
+    }
+    .conclusion h2 { margin-bottom: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      border-top: 1px solid rgba(200,169,122,0.1);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+    footer strong { color: var(--gold); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      .hero-content { padding: 2rem 1.2rem 2.5rem; }
+      article { padding: 2.5rem 1.2rem 4rem; }
+      .conclusion { padding: 1.8rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="https://thecaffeinecartel.co.za">The Caffeine Cartel</a>
+    <div class="nav-links">
+      <a href="https://thecaffeinecartel.co.za">Home</a>
+      <a href="https://www.facebook.com/profile.php?id=61576680840491" target="_blank">Facebook</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <img src="hero-coffee.jpg" alt="Coffee beans roasting in a drum" />
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <span class="blog-label">The Caffeine Cartel — Blog No. 03</span>
+      <h1>What the History of Coffee<br/><em>Teaches You</em></h1>
+      <p class="hero-sub">Five lessons from coffee's gloriously dark, occasionally horrifying, and utterly fascinating past — that still matter today.</p>
+    </div>
+  </div>
+
+  <article>
+
+    <p class="intro">
+      For most of us, the morning begins with a familiar, almost sacred ritual: the hiss of the espresso machine, the rich earthy perfume of the grind, and that first restorative sip of what was once reverently called the <strong>"Wine of Araby."</strong> Lovely. Civilised. Deeply comforting.
+      <br/><br/>
+      Except — as with most civilised things — there's a rather uncivilised history lurking just beneath the crema. Buckle up, because your next cup is about to come with a side of geopolitics, alchemy, colonial guilt, and the faint suggestion that caffeine may have literally built humanity. No pressure.
+    </p>
+
+    <!-- 1 -->
+    <span class="section-number">Lesson No. 01</span>
+    <h2>It Might Have Made Us Human in the First Place</h2>
+    <p>
+      Here's a thought to sit with over your morning flat white: some anthropologists believe that the wild coffee trees of the Ethiopian highlands — the very birthplace of humanity — may have played a role in a dramatic 30% increase in human brain size roughly 500,000 years ago.
+    </p>
+    <p>
+      Early humans who snacked on coffee cherries got a jolt of caffeine that may have turbocharged their cognition. More brain. More thinking. More everything. Your alarm clock dependency, in other words, may be <strong>genuinely prehistoric</strong>.
+    </p>
+    <div class="wit-box">
+      <strong>The Cartel's Take</strong>
+      So technically, Eve's apple might have been a coffee cherry. Which would explain a lot about why we need coffee just to function — we've been hooked since before we had the good sense to brew it.
+    </div>
+
+    <div class="section-divider">☕</div>
+
+    <!-- 2 -->
+    <span class="section-number">Lesson No. 02</span>
+    <h2>The First Coffee Shops Were Hotbeds of Revolution</h2>
+    <p>
+      The 17th century coffeehouses of London, Cairo, and Istanbul were not cosy places to tap on a MacBook. They were <strong>intellectual war zones</strong>. For the price of a penny (which covered your coffee and entry), anyone — merchant, poet, philosopher, or spy — could sit, argue, and plot.
+    </p>
+    <p>
+      Lloyd's of London — yes, the global insurance giant — began as a coffeehouse. The London Stock Exchange? Also a coffeehouse. The French Revolution was significantly caffeinated. Lesson: <strong>every great upheaval runs on coffee</strong>.
+    </p>
+    <div class="wit-box">
+      <strong>The Cartel's Take</strong>
+      The next time someone tells you your café is just a nice spot to scroll Instagram, remind them that the modern financial system was also invented somewhere with uncomfortable chairs and overpriced hot drinks.
+    </div>
+
+    <div class="section-divider">☕</div>
+
+    <!-- 3 -->
+    <span class="section-number">Lesson No. 03</span>
+    <h2>Control the Bean, Control the World</h2>
+    <p>
+      For over a century, the Arabian Peninsula had an iron grip on the global coffee supply. The Yemeni port of Mocha exported the world's entire coffee — and they roasted every bean before export to prevent anyone from growing their own. Intellectual property protection, 1600s style.
+    </p>
+    <p>
+      It didn't hold. A Sufi pilgrim named Baba Budan smuggled seven seeds out of Mecca strapped to his stomach, and planted them in India. The Dutch stole a plant for their colonies. The French smuggled a cutting to the Caribbean. <strong>Every cup of Brazilian, Colombian, or Ethiopian coffee you drink today traces back to stolen seeds.</strong>
+    </p>
+    <div class="wit-box">
+      <strong>The Cartel's Take</strong>
+      The coffee supply chain has been an elaborate act of international theft from the very beginning. Which does make "ethically sourced" a particularly loaded phrase when you think about it hard enough.
+    </div>
+
+    <div class="section-divider">☕</div>
+
+    <!-- 4 -->
+    <span class="section-number">Lesson No. 04</span>
+    <h2>Coffee Has Always Made the Powerful Nervous</h2>
+    <p>
+      In 1511, the Governor of Mecca banned coffee — because the coffeehouses were full of people criticising the government. Charles II of England tried to ban them for the same reason in 1675. Frederick the Great of Prussia banned coffee to protect the beer industry (yes, really) and deployed "coffee sniffers" — retired soldiers who sniffed out illegal roasting.
+    </p>
+    <p>
+      Every ban failed spectacularly. People just kept drinking it anyway. <strong>Coffee, it turns out, is non-negotiable.</strong>
+    </p>
+    <div class="wit-box">
+      <strong>The Cartel's Take</strong>
+      Governments have been trying to ban coffee for 500 years. This should be deeply comforting to anyone who's ever felt their morning cup was a small act of personal sovereignty. It was. It is.
+    </div>
+
+    <div class="section-divider">☕</div>
+
+    <!-- 5 -->
+    <span class="section-number">Lesson No. 05</span>
+    <h2>The Cup Has a Cost Worth Knowing</h2>
+    <p>
+      The explosion of coffee across the Americas in the 18th and 19th centuries was built almost entirely on enslaved labour in Brazil, Haiti, Cuba, and beyond. The "democratisation" of coffee — the moment it went from exotic luxury to everyday staple — was made possible by one of the darkest chapters in human history.
+    </p>
+    <p>
+      Can we enjoy our brew without acknowledging the dark history steaming beneath it? Probably. Humans are remarkably gifted at that particular talent. But here at The Caffeine Cartel, we believe the cup tastes better when you know its story — the alchemy, the exploitation, the island exiles, the burning feet, and the extraordinary, improbable fact that a small red berry may have been responsible for humanity becoming <em>human</em> in the first place.
+    </p>
+
+    <div class="conclusion">
+      <span class="section-number">The Bottom Line</span>
+      <h2>What Coffee Actually Teaches You</h2>
+      <p>
+        That <strong>power is always contested</strong>. That <strong>ideas spread whether you like it or not</strong>. That <strong>the things we take for granted have stories we've never been told</strong>. And that the difference between a good cup and a great one is almost always about knowing where it came from.
+      </p>
+      <p>
+        <strong>Drink consciously. Tip generously. Buy good beans.</strong> And maybe — just maybe — pour one out for that Sufi pilgrim who smuggled seven seeds out of Mecca in his belly so you could have your morning flat white.
+      </p>
+    </div>
+
+  </article>
+
+  <footer>
+    <strong>THE CAFFEINE CARTEL</strong> &nbsp;·&nbsp; <a href="https://thecaffeinecartel.co.za">thecaffeinecartel.co.za</a> &nbsp;·&nbsp; We know where your beans come from.
+  </footer>
+
+</body>
+</html>
